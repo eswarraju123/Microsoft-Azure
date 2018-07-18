@@ -22,11 +22,15 @@ namespace StorageTable
 
             while(true)
             {
-                Console.WriteLine("1. Insert\n2. Read\n3. Update\n4. Delete\n5. Exit\n");
+                Console.WriteLine("1. Create a Table\n2. Insert a record\n3. Read a record\n4. Update a record\n5. Delete a record\n6. Exit\n");
                 Console.Write("Enter your Option : ");
                 switch(Convert.ToInt32(Console.ReadLine()))
                 {
                     case 1:
+                        // Create the table if it doesn't exist.
+                        table.CreateIfNotExists();
+                        break;
+                    case 2:
                         // Insert Operation
                         TableBatchOperation batchOperation = new TableBatchOperation();
 
@@ -38,7 +42,7 @@ namespace StorageTable
                         table.Execute(insertOperation);
                         Console.WriteLine("Record Inserted Successfully");
                         break;
-                    case 2:
+                    case 3:
                         // Read Operation
                         TableQuery<Users> query = new TableQuery<Users>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "username"));
                         foreach (Users user in table.ExecuteQuery(query))
@@ -46,7 +50,7 @@ namespace StorageTable
                             Console.WriteLine("User Name : {0}\tName : {1}\tEmail : {2}\tPhone Number : {3}\n", user.PartitionKey, user.RowKey, user.Email, user.PhoneNumber);
                         }
                         break;
-                    case 3:
+                    case 4:
                         // Update Operation
                         TableOperation retrieveOperation = TableOperation.Retrieve<Users>("username", "name");
                         TableResult retrievedResult = table.Execute(retrieveOperation);
@@ -69,7 +73,7 @@ namespace StorageTable
                             Console.WriteLine("User info could not be retrieved to update.");
                         }
                         break;
-                    case 4:
+                    case 5:
                         // Delete Operation
                         TableOperation deleteOperation = TableOperation.Retrieve<Users>("username", "name");
                         TableResult result = table.Execute(deleteOperation);
@@ -85,7 +89,7 @@ namespace StorageTable
                             Console.WriteLine("Could not retrieve the user info.");
                         }
                         break;
-                    case 5:
+                    case 6:
                         System.Environment.Exit(1);
                         break;
                 }
