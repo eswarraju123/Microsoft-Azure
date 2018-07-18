@@ -22,22 +22,21 @@ namespace StorageTable
 
             while(true)
             {
-                Console.WriteLine("1. Create a Table\n2. Insert a record\n3. Read a record\n4. Update a record\n5. Delete a record\n6. Exit\n");
+                Console.WriteLine("1. Create a Table\n2. Insert a record\n3. Read a record\n4. Update a record\n5. Delete a record\n6. Delete a Table\n7. Exit\n");
                 Console.Write("Enter your Option : ");
                 switch(Convert.ToInt32(Console.ReadLine()))
                 {
                     case 1:
-                        // Create the table if it doesn't exist.
+                        // Create a table if it doesn't exist.
                         table.CreateIfNotExists();
+                        Console.WriteLine("Table created successfully.");
                         break;
                     case 2:
                         // Insert Operation
                         TableBatchOperation batchOperation = new TableBatchOperation();
-
                         Users users = new Users("username", "name");
                         users.PhoneNumber = "mobile number";
                         users.Email = "mail address";
-
                         TableOperation insertOperation = TableOperation.Insert(users);
                         table.Execute(insertOperation);
                         Console.WriteLine("Record Inserted Successfully");
@@ -57,15 +56,10 @@ namespace StorageTable
                         Users updateUser = (Users)retrievedResult.Result;
                         if (updateUser != null)
                         {
-                            // Change the phone number.
                             updateUser.PhoneNumber = "new phone number";
-
-                            // Create the Replace TableOperation.
                             TableOperation updateOperation = TableOperation.Replace(updateUser);
-
-                            // Execute the operation.
                             table.Execute(updateOperation);
-
+                            Console.WriteLine("User Name : {0}\tName : {1}\tEmail : {2}\tPhone Number : {3}\n", updateUser.PartitionKey, updateUser.RowKey, updateUser.Email, updateUser.PhoneNumber);
                             Console.WriteLine("User info updated successfully.");
                         }
                         else
@@ -74,7 +68,7 @@ namespace StorageTable
                         }
                         break;
                     case 5:
-                        // Delete Operation
+                        // Record Deletion
                         TableOperation deleteOperation = TableOperation.Retrieve<Users>("username", "name");
                         TableResult result = table.Execute(deleteOperation);
                         Users deleteUser = (Users)result.Result;
@@ -82,7 +76,7 @@ namespace StorageTable
                         {
                             deleteOperation = TableOperation.Delete(deleteUser);
                             table.Execute(deleteOperation);
-                            Console.WriteLine("User info deleted successfully..");
+                            Console.WriteLine("User info deleted successfully.");
                         }
                         else
                         {
@@ -90,6 +84,11 @@ namespace StorageTable
                         }
                         break;
                     case 6:
+                        // Table Deletion
+                        table.DeleteIfExists();
+                        Console.WriteLine("Table deleted successfully.");
+                        break;
+                    case 7:
                         System.Environment.Exit(1);
                         break;
                 }
