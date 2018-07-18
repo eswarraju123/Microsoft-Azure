@@ -17,19 +17,79 @@ namespace StorageTable
                 CloudConfigurationManager.GetSetting("connectionString"));
 
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+
             CloudTable table = tableClient.GetTableReference("users");
 
-            TableBatchOperation batchOperation = new TableBatchOperation();
+            while(true)
+            {
+                Console.WriteLine("1. Insert\n2. Read\n3. Update\n4. Delete\n5. Exit\n");
+                Console.Write("Enter your Option : ");
+                switch(Convert.ToInt32(Console.ReadLine()))
+                {
+                    case 1:
+                        // Insert Operation
+                        TableBatchOperation batchOperation = new TableBatchOperation();
 
-            Users users = new Users("username", "name");
-            users.PhoneNumber = "mobile number";
-            users.Email = "mail address";
+                        Users users = new Users("username", "name");
+                        users.PhoneNumber = "mobile number";
+                        users.Email = "mail address";
 
-            TableOperation insertOperation = TableOperation.Insert(users);
-            table.Execute(insertOperation);
+                        TableOperation insertOperation = TableOperation.Insert(users);
+                        table.Execute(insertOperation);
+                        Console.WriteLine("Record Inserted Successfully");
+                        break;
+                    case 2:
+                        // Read Operation
+                        TableQuery<Users> query = new TableQuery<Users>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "username"));
+                        foreach (Users user in table.ExecuteQuery(query))
+                        {
+                            Console.WriteLine("User Name : {0}\tName : {1}\tEmail : {2}\tPhone Number : {3}\n", user.PartitionKey, user.RowKey, user.Email, user.PhoneNumber);
+                        }
+                        break;
+                    case 3:
+                        // Update Operation
+                        TableOperation retrieveOperation = TableOperation.Retrieve<Users>("username", "name");
+                        TableResult retrievedResult = table.Execute(retrieveOperation);
+                        Users updateUser = (Users)retrievedResult.Result;
+                        if (updateUser != null)
+                        {
+                            // Change the phone number.
+                            updateUser.PhoneNumber = "new phone number";
 
-            Console.WriteLine("Inserted");
-            Console.ReadKey();
+                            // Create the Replace TableOperation.
+                            TableOperation updateOperation = TableOperation.Replace(updateUser);
+
+                            // Execute the operation.
+                            table.Execute(updateOperation);
+
+                            Console.WriteLine("User info updated successfully.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("User info could not be retrieved to update.");
+                        }
+                        break;
+                    case 4:
+                        // Delete Operation
+                        TableOperation deleteOperation = TableOperation.Retrieve<Users>("username", "name");
+                        TableResult result = table.Execute(deleteOperation);
+                        Users deleteUser = (Users)result.Result;
+                        if (deleteUser != null)
+                        {
+                            deleteOperation = TableOperation.Delete(deleteUser);
+                            table.Execute(deleteOperation);
+                            Console.WriteLine("User info deleted successfully..");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Could not retrieve the user info.");
+                        }
+                        break;
+                    case 5:
+                        System.Environment.Exit(1);
+                        break;
+                }
+            }
         }
     }
     class Users : TableEntity
