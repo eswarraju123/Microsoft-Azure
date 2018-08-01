@@ -8,6 +8,19 @@ The Microsoft Azure SQL SDK allows you to build Azure applications that take adv
     - Create/Delete Tables
     - Query/Create/Read/Update/Delete Records
     
-## Code Sample
+## Service Deployment
 
-- C#
+- Azure Portal
+    - [Microsoft Azure SQL Database using Portal](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-portal) documentation to manage SQL database service.
+
+- Azure Powershell
+    - [Microsoft Azure SQL Database using Powershell](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-powershell) documentation to manage SQL database service.
+
+- Azure CLI
+    - [Microsoft Azure SQL Database using CLI](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-cli) documentation to manage SQL database service.
+
+- ARM Template
+    - [Microsoft Azure SQL Database using ARM Templates](https://docs.microsoft.com/en-us/azure/templates/microsoft.sql/servers/databases) documentation to manage SQL database service.
+
+## Service Deployment
+- CRUD Operations using C#
