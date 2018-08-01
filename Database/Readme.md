@@ -23,4 +23,4 @@ The Microsoft Azure SDK allows you to build Azure applications that take advanta
     
 ## Managing Azure Databases using Azure Automation
 
-- [Microsoft Azure Database Automation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-manage-automation) documentation to manage storage service.
+- [Microsoft Azure Database Automation](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-manage-automation) documentation to manage database service.
