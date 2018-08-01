@@ -2,7 +2,7 @@
 
 The Microsoft Azure SDK allows you to build Azure applications that take advantage of scalable cloud computing resources.
 
-## Features
+## Services
 
 - SQL
     - Create/Delete Tables
