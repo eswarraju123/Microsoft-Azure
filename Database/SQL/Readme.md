@@ -22,5 +22,5 @@ The Microsoft Azure SQL SDK allows you to build Azure applications that take adv
 - ARM Template
     - [Microsoft Azure SQL Database using ARM Templates](https://docs.microsoft.com/en-us/azure/templates/microsoft.sql/servers/databases) documentation to manage SQL database service.
 
-## Service Deployment
+## Code Sample
 - CRUD Operations using C#
