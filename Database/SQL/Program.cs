@@ -15,10 +15,10 @@ namespace SQLDatabase
             try
             {
                 SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-                builder.DataSource = "hgsfdv.database.windows.net";
-                builder.UserID = "demo";
-                builder.Password = "Asdf12345678";
-                builder.InitialCatalog = "sample";
+                builder.DataSource = "servername.database.windows.net";
+                builder.UserID = "username";
+                builder.Password = "password";
+                builder.InitialCatalog = "database name";
 
                 SqlConnection connection = new SqlConnection(builder.ConnectionString);
                 connection.Open();
