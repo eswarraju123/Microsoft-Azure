@@ -8,8 +8,8 @@ namespace ServiceBUSQueue
 
     class Program
     {
-        const string ServiceBusConnectionString = "Endpoint=sb://vkvnkl.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=DOxp86IXXO1AgOHSK+bP41LROIB/BXXdkkmx5A4voos=";
-        const string QueueName = "myqueue";
+        const string ServiceBusConnectionString = "Shared Access Signature Primary or Secondary Connection String";
+        const string QueueName = "queue name";
         static IQueueClient queueClient;
 
         static void Main(string[] args)
