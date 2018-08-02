@@ -23,4 +23,4 @@ The Microsoft Azure Service BUS SDK allows you to build Azure applications that 
 
 ## ARM Template for Azure Service BUS
 
-- [Microsoft Azure Service BUS ARM Template](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-resource-manager-overview)
+- [Microsoft Azure Service BUS ARM Template](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-resource-manager-overview) documentation to manage Service BUS service.
