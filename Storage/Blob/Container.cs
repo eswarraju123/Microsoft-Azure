@@ -23,7 +23,7 @@ namespace StorageBlobContainer
             while (true)
             {
                 string containerName = null;
-                storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=networkdiag484;AccountKey=2SMVYxUilSV45OjURssEhufpf85WamWOP5igyMNMOnjPw6QZZwZQI1ArSraXLCsZcqVTqH93jg4GG39ftw2jMw==;EndpointSuffix=core.windows.net");
+                storageAccount = CloudStorageAccount.Parse("Shared Access Signature Primary or Secondary Connection String");
                 blobClient = storageAccount.CreateCloudBlobClient();
                 Console.WriteLine("\n1. Create a container\n2. View Containers\n3. Delete a container\n4. Exit\n");
                 Console.Write("Enter your Option : ");
