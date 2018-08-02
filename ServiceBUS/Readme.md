@@ -15,7 +15,7 @@ The Microsoft Azure Service BUS SDK allows you to build Azure applications that 
     
 ## Portal for Azure Service BUS
 
-- [Microsoft Azure Service BUS] (https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-quickstart-portal) documentation to manage Service BUS service.
+- [Microsoft Azure Service BUS](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-quickstart-portal) documentation to manage Service BUS service.
 
 ## Powershell for Azure Service BUS
 
