@@ -2,11 +2,20 @@
 
 The Microsoft Azure Storage SDK allows you to build Azure applications that take advantage of scalable cloud computing resources.
 
-## Features
+## Blob Service Types
 
+- Block Blob
+- Append Blob
+- Page Blob
+
+## Services
+
+- Container
+    - Create/View/Delete Container
+    
 - Blob
-    - Create/Delete Blob
-    - Create/Read/Update/Delete Blob
+    - Create/List/Delete Block/Page/Append Blobs
+    - Download Block/Page/Append Blobs
     
 ## Environment Setup
 
